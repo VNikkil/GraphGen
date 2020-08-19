@@ -182,6 +182,9 @@ function changeFunc(){
     
         } 
     }
+    else{
+        wait.innerHTML = "Already plotted";
+    }
   }
 }
 
