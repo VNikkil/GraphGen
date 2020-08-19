@@ -92,14 +92,13 @@ function drawGraph(graph) {
 
 function plotter(graph,func,colour,isDrawingagain)
 {
-    var x,y;
+    var x,y,y2 =0;
     var temp = true;
     graph.beginPath();
     x = -350;
-    if(eval(func))
-    {
     y = eval(func);
     graph.moveTo(-350,y);
+    graph.lineWidth=1.5;
     graph.strokeStyle = colour;
     for( x = -350 ;x*scale<= 350; x+= scale/200)
     {
@@ -119,64 +118,26 @@ function plotter(graph,func,colour,isDrawingagain)
         y = -50;
 
          
-       // if(isFinite(y))
-       // {
+            if(y*y2<0)
+            {
+                 if(Math.abs(y2 - y) > 15)
+                     graph.moveTo(x*scale,-y*scale);
+
+                 else{
+                    graph.lineTo(x*scale,-y*scale);
+                    graph.stroke();
+                 }
+
+            }  
+          else{
                 graph.lineTo(x*scale,-y*scale);
                  graph.stroke();
-    
-      //  }
-
-       /* else{
-            while(x < 350)
-            {
-                x += 0.0001;
-                y = eval(func);
-                if(isFinite(y))
-                {
-                    graph.beginPath();
-                    if(y > 0)
-                    graph.moveTo(x - 0.0001,-100000);
-
-                    else
-                    graph.moveTo(x - 0.0001,+100000);
-                    break;
-                }
-            }
-        }
-*/
+          }
+        y2 = y;
 
     }
 
-   /* for( x =0 ;x >  -350;x-= 0.15)
-    {
-        y = eval(func);
-
-        if(isFinite(y))
-        {
-        graph.lineTo(x*30,-y*30);
-        graph.stroke();
-        }
-
-        else{
-            while(x > -350)
-            {
-                x -= 0.0001;
-                y = eval(func);
-                if(isFinite(y))
-                { 
-                    graph.beginPath();
-                    if(y > 0)
-                    graph.moveTo(x - 0.0001,-100000);
-
-                    else
-                    graph.moveTo(x - 0.0001,+100000);
-                    break;
-                }
-            }
-        }
-    }
-*/
-    
+  
       wait.innerHTML = "";
     let p = document.createElement("p");
     p.style.borderColor = graph.strokeStyle;
@@ -187,7 +148,7 @@ function plotter(graph,func,colour,isDrawingagain)
         Colors.push(graph.strokeStyle);
         funcs.appendChild(p);
     } 
-  }
+  
  
  
 }
@@ -211,13 +172,18 @@ function changeFunc(){
      if(!CurrFuncs.includes(func))
      {
          console.log("inside");
-         var x =-350;
-         if(eval(func))
-         CurrFuncs.push(func);
-         plotter(graph,func,getRandomColor(),false);
+         for(let x= -350 ;x <350 ;x++)
+         {
+             if(eval(func))
+            {
+                 CurrFuncs.push(func);
+                 plotter(graph,func,getRandomColor(),false);
+                x = 400;
+           }
     
         } 
     }
+  }
 }
 
 function getRandomColor() {
