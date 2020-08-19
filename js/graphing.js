@@ -96,6 +96,8 @@ function plotter(graph,func,colour,isDrawingagain)
     var temp = true;
     graph.beginPath();
     x = -350;
+    if(eval(func))
+    {
     y = eval(func);
     graph.moveTo(-350,y);
     graph.strokeStyle = colour;
@@ -174,8 +176,8 @@ function plotter(graph,func,colour,isDrawingagain)
         }
     }
 */
-    wait.innerHTML = "";
-
+    
+      wait.innerHTML = "";
     let p = document.createElement("p");
     p.style.borderColor = graph.strokeStyle;
     p.style.color = "black";
@@ -184,7 +186,10 @@ function plotter(graph,func,colour,isDrawingagain)
     {
         Colors.push(graph.strokeStyle);
         funcs.appendChild(p);
-    }
+    } 
+  }
+ 
+ 
 }
 
 
@@ -206,6 +211,8 @@ function changeFunc(){
      if(!CurrFuncs.includes(func))
      {
          console.log("inside");
+         var x =-350;
+         if(eval(func))
          CurrFuncs.push(func);
          plotter(graph,func,getRandomColor(),false);
     
