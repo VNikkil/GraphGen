@@ -157,14 +157,13 @@ function plotter(graph,func,colour,isDrawingagain)
 function changeFunc(){
     var func = document.getElementById('func').value;
     func = func.toLowerCase();
-    func = func.replace("cos", "Math.cos");
-    func = func.replace("sin", "Math.sin");
-    func = func.replace("tan", "Math.tan");
-    func = func.replace("log", "Math.log");
-    func = func.replace("pow", "Math.pow");
-    func = func.replace("e","Math.exp(1)");
-    func = func.replace("sqrt","Math.sqrt");
-
+    func = func.replace(/cos/g, "Math.cos");
+    func = func.replace(/sin/g, "Math.sin");
+    func = func.replace(/tan/g, "Math.tan");
+    func = func.replace(/log/g, "Math.log");
+    func = func.replace(/pow/g, "Math.pow");
+    func = func.replace(/e/g,"Math.exp(1)");
+    func = func.replace(/sqrt/g,"Math.sqrt");
     if(func != null)
     {
      wait.innerHTML = "Not a Valid Function";
