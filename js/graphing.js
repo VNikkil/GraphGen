@@ -162,7 +162,6 @@ function changeFunc(){
     func = func.replace("tan", "Math.tan");
     func = func.replace("log", "Math.log");
     func = func.replace("pow", "Math.pow");
-    func = func.replace("floor","Math.floor");
     func = func.replace("e","Math.exp(1)");
     func = func.replace("sqrt","Math.sqrt");
 
