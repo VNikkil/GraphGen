@@ -1,0 +1,27 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <link rel="stylesheet" href="css/onsite1-style.css">
+    </head>
+    <body>
+    <h1>Simple Graph Generator</h1>
+    <p id="wait"></p>
+    <canvas id="graph"></canvas> 
+    <label for="func" style="font-size:20px;">y = </label>
+    <input type="text" id="func">
+    <button id="submit" onclick="changeFunc()">PLOT</button><br>
+    <div id="zoom">
+        <p> ZOOM  </p>
+    <button id="minus" onclick="scaleDec()"> + </button><br><br>
+    <button id="plus" onclick="scaleInc()"> - </button><br><br><br><br>
+    <pre>For a^b, 
+            give input as pow(a,b)</pre><br>
+    <pre>For √a,
+            give input as sqrt(a)</pre>
+    </div>
+    <div id ="functions">
+    </div>
+    <button onclick="reload()" style="margin: 10px;">CLEAR</button>
+    <script src="js/graphing.js"></script>
+    </body>
+</html>
